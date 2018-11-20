@@ -15,11 +15,7 @@ else {
         input[i] = inputArguments[i];
         console.log(input[i]);
     }
-    readFile();
     findSynonym(input);
-}
-//read in document bzw. line:
-function readFile() {
 }
 //look if synonym is in the list:
 function findSynonym(input) {
@@ -27,12 +23,19 @@ function findSynonym(input) {
         if (err) {
             console.log(err);
         }
+        var dataArray = data.split('\n'); //for finding synonyms
+        //Check if the input word or a relative to the input word is in te file:
         for (var i = 0; i < input.length; i++) {
             if (!data.match(input[i])) {
                 console.log("There were no Synonyms found!");
             }
             else {
-                console.log('yes');
+                console.log('x+x+x+ ' + input[i].toUpperCase() + ' +x+x+x ');
+                for (var j = 0; j < dataArray.length; j++) {
+                    if (input[i].localeCompare(dataArray[j])) {
+                        console.log(dataArray[j] + '\n');
+                    }
+                }
             }
         }
     });

@@ -20,15 +20,20 @@ else {
 }
 //read in document bzw. line:
 function readFile() {
-    fs.readFile(file, 'utf8', function (err, data) {
-        if (err)
-            console.log(err);
-        console.log('OK: ' + file);
-        console.log(data);
-    });
 }
 //look if synonym is in the list:
 function findSynonym(input) {
-    for (var i = 0; i < input.length; i++) {
-    }
+    fs.readFile(file, 'utf8', function (err, data) {
+        if (err) {
+            console.log(err);
+        }
+        for (var i = 0; i < input.length; i++) {
+            if (!data.match(input[i])) {
+                console.log("There were no Synonyms found!");
+            }
+            else {
+                console.log('yes');
+            }
+        }
+    });
 }

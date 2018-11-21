@@ -1,5 +1,6 @@
 let file: string = 'openthesaurus.txt'
-let inputArguments: string[] = process.argv.slice(2);
+let inputArguments: string[] = process.argv.slice(2);          
+let found:boolean;
 
 import fs = require('fs');              //needed for reading in the file
 
@@ -36,7 +37,9 @@ function findSynonym(input: string[]) {
         for (let i = 0; i < input.length; i++) {
             if (!data.match(input[i])){
                 process.stdout.write ("There were no Synonyms found!");
+                found=false;
             }else{
+                found=true;
                 process.stdout.write('x+x+x+ '+ input[i].toUpperCase() + ' +x+x+x ');
 
                 for(let j = 0; j<dataArray.length;j++){

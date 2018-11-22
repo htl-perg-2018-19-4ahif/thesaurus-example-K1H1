@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var file = 'openthesaurus.txt';
 var inputArguments = process.argv.slice(2);
+var found;
 var fs = require("fs"); //needed for reading in the file
 var input = [];
 //Write error message when there is no word-input
@@ -27,12 +28,19 @@ function findSynonym(input) {
         for (var i = 0; i < input.length; i++) {
             if (!data.match(input[i])) {
                 process.stdout.write("There were no Synonyms found!");
+                found = false;
             }
             else {
+                found = true;
                 process.stdout.write('x+x+x+ ' + input[i].toUpperCase() + ' +x+x+x ');
                 for (var j = 0; j < dataArray.length; j++) {
                     if (dataArray[j].match(input[i])) {
-                        process.stdout.write(dataArray[j] + '\n');
+                        var splitArray = dataArray[j].split(";");
+                        for (var k = 0; k < splitArray.length; k++) {
+                            //    if(splitArray[k].match(input[i])){
+                            process.stdout.write(splitArray[k] + '\n');
+                            // }
+                        }
                     }
                 }
             }

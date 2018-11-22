@@ -44,7 +44,16 @@ function findSynonym(input: string[]) {
 
                 for(let j = 0; j<dataArray.length;j++){
                     if(dataArray[j].match(input[i])){
-                        process.stdout.write(dataArray[j]+ '\n');
+
+                        let splitArray: string[] = dataArray[j].split(";");
+
+                        for(let k=0;k<splitArray.length;k++){
+                        //    if(splitArray[k].match(input[i])){
+                                process.stdout.write(splitArray[k]+ '\n');
+                           // }
+                            
+                        }
+                        
                     }
                 }
             }
